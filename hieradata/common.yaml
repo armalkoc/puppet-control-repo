@@ -1,0 +1,15 @@
+# values for index.html nginx file
+
+nginx::config::index_source: "puppet:///modules/nginx/index.html"
+nginx::config::index_owner: "root"
+nginx::config::index_mode: "0644"
+
+# values for the nginx virtual host 
+
+nginx::config::vhost_port: "80"
+nginx::config::vhost_server_name: "example.nginx.com"
+nginx::config::vhost_owner: "root"
+
+# nginx systemd configuration
+nginx::service::systemd_file: "puppet:///modules/nginx/nginx.service"
+nginx::service::systemd_owner: "root"
