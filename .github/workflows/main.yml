@@ -1,0 +1,23 @@
+name: Deploy Puppet Environment to Puppet Server
+on:
+  push:
+    branches:
+      - production
+      - development
+      - stage
+
+jobs:
+  r10k-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy nginx module Environment
+        uses: appleboy/ssh-action@v1.2.5
+        with:
+          host: ${{ secrets.PUPPET_SERVER }}
+          username: ${{ secrets.PUPPET_USER }}
+          port: ${{ secrets.PUPPET_PORT }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+              ENVIRONMENT=${GITHUB_REF##*/}
+              echo "Deploying Puppet environment: $ENVIRONMENT"
+              r10k deploy environment $ENVIRONMENT -p
