@@ -1,2 +1,2 @@
-nginx::config::vhost_port: "8080"
+nginx::config::vhost_port: "8087"
 nginx::config::vhost_server_name: "development.nginx.com"
